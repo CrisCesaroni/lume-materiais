@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lume · Adverbs of Manner</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+:root{
+  --bg:#0F1E28;
+  --bg2:#162330;
+  --bg3:#1C2E3A;
+  --sky:#29BDE0;
+  --sky-mid:#5ACCE8;
+  --sky-light:#8DDCF0;
+  --sky-pale:#C2EEF8;
+  --amber:#E8A030;
+  --amber-light:#F5C870;
+  --amber-pale:#FEF0CC;
+  --white:#FFFFFF;
+  --cream:#F7F4EF;
+  --ink:#1A1A18;
+  --mid:#666;
+  --stone:#999;
+  --border-dark:rgba(41,189,224,.15);
+  --border-light:#D8EEF5;
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--white);font-weight:300}
+
+.prog-bar{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--sky),var(--amber));width:0%;z-index:200;transition:width .1s}
+
+/* HEADER */
+.hdr{
+  position:sticky;top:0;z-index:100;
+  background:rgba(15,30,40,.96);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border-dark);
+  padding:10px 18px;
+  display:flex;align-items:center;justify-content:space-between;gap:12px
+}
+.logo-text{font-family:'Cormorant Garamond',serif;font-size:24px;font-style:italic;font-weight:300;color:var(--sky);letter-spacing:-.5px}
+.hdr-badge{font-size:9px;font-weight:500;color:var(--sky);background:rgba(41,189,224,.12);padding:3px 10px;border-radius:10px;border:1px solid rgba(41,189,224,.25);letter-spacing:1px;text-transform:uppercase}
+
+.page{max-width:520px;margin:0 auto;padding:0 0 60px}
+
+/* COVER */
+.cover{
+  background:linear-gradient(145deg,var(--bg),var(--bg3));
+  padding:44px 22px 40px;
+  text-align:center;
+  display:flex;flex-direction:column;align-items:center;gap:16px;
+  border-bottom:2px solid var(--sky)
+}
+.cover-tag{font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:2px;color:var(--sky);background:rgba(41,189,224,.1);padding:5px 16px;border-radius:20px;border:1px solid rgba(41,189,224,.25)}
+.cover-title{font-family:'Cormorant Garamond',serif;font-size:52px;font-weight:300;color:var(--white);line-height:1.05;letter-spacing:-1.5px}
+.cover-title span{color:var(--sky);font-style:italic}
+.cover-sub{font-size:13px;color:var(--stone);max-width:280px;line-height:1.6}
+.cover-badge{display:flex;align-items:center;gap:8px;background:rgba(255,255,255,.05);border:1px solid var(--border-dark);padding:8px 16px;border-radius:20px}
+.av{width:28px;height:28px;background:var(--sky);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:500;color:#fff}
+.sname{font-size:12px;color:var(--stone);font-weight:400}
+
+/* DIVIDER */
+.divider{height:3px;display:flex}
+.d1{flex:2;background:var(--sky)}
+.d2{flex:1.5;background:var(--sky-mid)}
+.d3{flex:1.5;background:var(--amber)}
+
+/* SECTIONS */
+.sec{padding:24px 18px}
+.sec.dark{background:var(--bg2)}
+.sec.darker{background:var(--bg)}
+.sec.white{background:var(--white)}
+.sec.sky{background:var(--sky)}
+.sec.amber-bg{background:var(--amber)}
+
+.sec-lbl{font-size:9px;font-weight:500;text-transform:uppercase;letter-spacing:1.5px;padding:3px 10px;border-radius:10px;display:inline-block;margin-bottom:8px}
+.lbl-sky{background:rgba(41,189,224,.15);color:var(--sky-light)}
+.lbl-amber{background:rgba(232,160,48,.15);color:var(--amber-light)}
+.lbl-white{background:rgba(255,255,255,.15);color:rgba(255,255,255,.7)}
+.lbl-dark{background:rgba(41,189,224,.12);color:var(--sky)}
+
+.sec-title{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:300;line-height:1.2;margin-bottom:4px}
+.t-white{color:var(--white)}
+.t-dark{color:var(--ink)}
+.t-sky{color:var(--white)}
+.tap-hint{font-size:10px;font-style:italic;margin-bottom:12px}
+.th-dark{color:var(--stone)}
+.th-light{color:rgba(255,255,255,.5)}
+
+/* LEGEND */
+.legend-row{display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin-bottom:14px}
+.legend-row span{font-size:10px;color:var(--stone)}
+.hl-m{background:rgba(232,160,48,.15);color:var(--amber-light);font-weight:500;padding:1px 6px;border-radius:3px;border-bottom:2px solid var(--amber)}
+.hl-a{background:rgba(41,189,224,.12);color:var(--sky-light);font-weight:500;padding:1px 6px;border-radius:3px;border-bottom:2px solid var(--sky-mid)}
+
+/* PROFILES */
+.profile{border-radius:10px;overflow:hidden;margin-bottom:10px;border:1px solid var(--border-dark)}
+.p-hdr{padding:9px 14px;display:flex;align-items:center;gap:9px}
+.p-emoji{font-size:17px}
+.p-name{font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:400;color:#fff}
+.p-info{font-size:9px;color:rgba(255,255,255,.55);font-weight:300;letter-spacing:.5px}
+.p-body{background:#fff;padding:11px 14px;font-size:12px;line-height:1.9;color:var(--ink)}
+.hl-m-p{background:#FEF0CC;color:#8B5000;font-weight:500;padding:0 4px;border-radius:2px;border-bottom:2px solid var(--amber)}
+.hl-a-p{background:#E4F5FC;color:#0077A0;font-weight:500;padding:0 4px;border-radius:2px;border-bottom:2px solid var(--sky)}
+
+/* T/F */
+.tf-block{background:#fff;border-radius:10px;padding:13px 14px;border:1px solid var(--border-light);margin-top:14px}
+.tf-lbl{font-size:9px;font-weight:500;text-transform:uppercase;letter-spacing:.5px;color:var(--stone);margin-bottom:8px}
+.tf-row{display:flex;align-items:center;justify-content:space-between;padding:7px 0;border-bottom:1px solid #EAF7FC;gap:8px}
+.tf-row:last-child{border:none}
+.tf-q{font-size:12px;color:var(--ink);flex:1;line-height:1.4}
+.tf-btns{display:flex;gap:4px;flex-shrink:0}
+.tf-btn{font-family:'DM Sans',sans-serif;font-size:10px;font-weight:500;padding:4px 10px;border-radius:6px;border:1.5px solid var(--border-light);background:#fff;color:var(--stone);cursor:pointer;transition:.15s}
+.tf-btn.correct{background:var(--sky);color:#fff;border-color:var(--sky)}
+.tf-btn.wrong{background:#FEF0CC;color:var(--amber);border-color:var(--amber)}
+.tf-btn.dim{opacity:.25;pointer-events:none}
+
+/* RULE CARDS */
+.rule-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px}
+.rule-card{background:rgba(255,255,255,.04);border-radius:10px;padding:12px 13px;border:1.5px solid var(--border-dark);cursor:pointer;transition:.15s}
+.rule-card.open{border-color:var(--sky);background:rgba(41,189,224,.08)}
+.rule-card:active{transform:scale(.97)}
+.rtag{font-size:8px;font-weight:500;color:var(--sky);text-transform:uppercase;letter-spacing:.5px;margin-bottom:3px}
+.rtitle{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:400;color:var(--white);margin-bottom:4px}
+.rforms{font-size:11px;color:var(--stone);line-height:1.5}
+.rforms b{color:var(--sky-light)}
+.ex-bubble{display:none;margin-top:8px;padding:7px 10px;background:rgba(41,189,224,.08);border-radius:6px;border-left:2px solid var(--sky)}
+.ex-bubble.show{display:block}
+.ex-txt{font-size:11px;color:var(--sky-light);line-height:1.5}
+.full-card{grid-column:1/-1}
+.warn-box{background:rgba(232,160,48,.1);border-left:3px solid var(--amber);border-radius:0 8px 8px 0;padding:10px 13px}
+.w-lbl{font-size:9px;font-weight:500;color:var(--amber);text-transform:uppercase;margin-bottom:2px}
+.w-txt{font-size:12px;color:var(--amber-light);line-height:1.5}
+.w-txt b{color:var(--white)}
+
+/* IRREGULARS */
+.irr-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px}
+.irr-card{background:#F5FBFE;border-radius:10px;padding:13px;border:1px solid var(--border-light);cursor:pointer;transition:.15s}
+.irr-card.open{border-color:var(--amber);background:rgba(232,160,48,.08)}
+.irr-card:active{transform:scale(.97)}
+.irr-adj{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:300;color:#888;margin-bottom:1px}
+.irr-arr{font-size:9px;color:#ccc;margin-bottom:1px}
+.irr-adv{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:400;color:var(--sky)}
+.irr-card.open .irr-adv{color:var(--amber)}
+.irr-note{display:none;margin-top:5px;font-size:10.5px;color:#666;line-height:1.5;font-style:italic}
+.irr-note.show{display:block}
+.irr-ex{display:none;margin-top:5px;padding:6px 10px;background:var(--amber-pale);border-radius:6px;border-left:2px solid var(--amber);font-size:11px;color:#8B5000;line-height:1.5}
+.irr-ex.show{display:block}
+
+/* DANGER */
+.danger-box{background:rgba(232,160,48,.08);border:1px solid rgba(232,160,48,.25);border-radius:10px;padding:12px 14px;margin-bottom:12px}
+.d-row{display:flex;align-items:baseline;gap:8px;margin-bottom:5px}
+.d-wrong{font-size:13px;color:#FF6B6B;text-decoration:line-through}
+.d-right{font-size:13px;color:var(--sky-light);font-weight:500}
+.d-tip{font-size:12px;color:var(--amber-light);line-height:1.6;margin-top:6px;padding-top:6px;border-top:1px solid rgba(232,160,48,.2)}
+.d-tip b{color:var(--white)}
+.ebadge{font-size:9px;padding:1px 6px;border-radius:5px;font-weight:500;flex-shrink:0}
+.ebadge.w{background:rgba(255,107,107,.15);color:#FF6B6B}
+.ebadge.r{background:rgba(41,189,224,.15);color:var(--sky-light)}
+
+/* POSITION */
+.pos-block{background:#F5FBFE;border-radius:10px;overflow:hidden;border:1px solid var(--border-light)}
+.pos-hdr{background:rgba(41,189,224,.12);padding:7px 12px;font-size:8.5px;font-weight:500;text-transform:uppercase;letter-spacing:.5px;color:var(--sky)}
+.pos-row{padding:10px 12px;border-top:1px solid var(--border-dark);display:flex;gap:10px;align-items:flex-start}
+.pos-tag{font-size:9px;font-weight:500;color:var(--sky);background:rgba(41,189,224,.1);padding:2px 7px;border-radius:5px;white-space:nowrap;margin-top:2px;flex-shrink:0}
+.pos-ex{font-size:12px;color:var(--ink);line-height:1.5}
+.pos-ex b{color:var(--sky-light)}
+
+/* MODIFIERS */
+.scale-block{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:12px;overflow:hidden;margin-bottom:14px}
+.scale-hdr{padding:8px 12px;font-size:8px;font-weight:500;text-transform:uppercase;letter-spacing:.8px;color:var(--ink);border-bottom:1px solid rgba(255,255,255,.08);opacity:.6;background:rgba(255,255,255,.08)}
+.scale-row{display:grid;grid-template-columns:repeat(4,1fr)}
+.scale-cell{padding:14px 6px;text-align:center;border-right:1px solid rgba(255,255,255,.06)}
+.scale-cell:last-child{border:none}
+.scale-mod{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:300;color:var(--white);display:block;margin-bottom:3px}
+.scale-ex{font-size:9px;color:rgba(255,255,255,.3);font-style:italic}
+.mod-picker{background:rgba(0,0,0,.2);border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,.08)}
+.mp-hdr{padding:8px 12px;font-size:8.5px;font-weight:500;text-transform:uppercase;letter-spacing:.5px;color:rgba(255,255,255,.35);background:rgba(255,255,255,.04)}
+.mp-pills{display:flex;gap:6px;flex-wrap:wrap;padding:10px 12px}
+.mp-pill{font-family:'DM Sans',sans-serif;font-size:11px;font-weight:400;padding:5px 13px;border-radius:20px;border:1.5px solid rgba(255,255,255,.12);background:rgba(255,255,255,.05);color:rgba(255,255,255,.5);cursor:pointer;transition:.15s}
+.mp-result{display:none;border-top:1px solid rgba(255,255,255,.07);padding:13px;animation:popIn .2s ease}
+.mp-result.show{display:block}
+.mp-sent{font-size:13px;color:rgba(255,255,255,.85);line-height:1.6}
+.mp-sent b{color:var(--amber-light);font-weight:500}
+.from-reading{background:rgba(255,255,255,.04);border-radius:10px;padding:12px 14px;border:1px solid rgba(255,255,255,.07);margin-top:13px}
+.fr-lbl{font-size:8.5px;font-weight:500;text-transform:uppercase;letter-spacing:.5px;color:rgba(255,255,255,.25);margin-bottom:8px}
+.fr-line{font-size:12px;color:rgba(255,255,255,.6);line-height:2}
+.fr-line b{color:var(--amber-light);font-weight:500}
+
+/* SPEAKING */
+.task-box{background:#fff;border-radius:12px;overflow:hidden;border:1px solid var(--border-light);margin-bottom:12px}
+.task-hdr{background:var(--sky);padding:10px 14px;display:flex;justify-content:space-between;align-items:center}
+.task-tag{font-size:10px;font-weight:500;letter-spacing:1px;color:var(--bg);text-transform:uppercase}
+.task-sub{font-size:9px;color:rgba(15,30,40,.6);font-style:italic}
+.task-body{padding:14px}
+.task-title{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:300;color:var(--ink);margin-bottom:3px}
+.task-desc{font-size:11.5px;color:var(--stone);line-height:1.6;margin-bottom:12px}
+.topic-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:12px}
+.topic{background:var(--sky-faint, #EAF7FC);border:1.5px solid var(--border-light);border-radius:8px;padding:8px 10px;font-size:11px;color:var(--stone);cursor:pointer;transition:.2s;display:flex;align-items:center;gap:6px}
+.topic.done{background:rgba(41,189,224,.1);border-color:var(--sky);color:var(--sky-light)}
+.tchk{width:16px;height:16px;border-radius:50%;background:rgba(255,255,255,.05);border:1.5px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;font-size:9px;transition:.2s;flex-shrink:0;color:transparent}
+.topic.done .tchk{background:var(--sky);border-color:var(--sky);color:var(--bg)}
+.adv-bank{background:#F0F9FD;border-radius:8px;padding:10px 12px}
+.ab-lbl{font-size:8px;font-weight:500;text-transform:uppercase;letter-spacing:.5px;color:var(--stone);margin-bottom:8px}
+.ab-pills{display:flex;flex-wrap:wrap;gap:5px}
+.ab-pill{font-size:10.5px;font-weight:400;color:var(--sky-light);background:rgba(41,189,224,.08);border:1px solid rgba(41,189,224,.2);padding:3px 9px;border-radius:12px}
+.example-box{background:rgba(41,189,224,.06);border:1px solid rgba(41,189,224,.15);border-radius:10px;padding:12px 14px}
+.ex-lbl{font-size:8px;font-weight:500;color:rgba(41,189,224,.4);text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px}
+.ex-sent{font-size:12.5px;color:var(--sky-light);line-height:1.7}
+.ex-sent b{color:var(--amber-light);font-weight:500}
+
+/* RECAP */
+.recap-cover{background:linear-gradient(145deg,var(--bg),var(--bg3));padding:40px 22px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:16px;border-top:2px solid var(--sky)}
+.end-title{font-family:'Cormorant Garamond',serif;font-size:44px;font-weight:300;color:var(--white);line-height:1.1;letter-spacing:-1px}
+.end-title span{color:var(--sky);font-style:italic}
+.end-sub{font-size:13px;color:var(--stone);max-width:280px;line-height:1.6}
+.recap{background:rgba(255,255,255,.04);border:1px solid var(--border-dark);border-radius:12px;padding:14px 16px;width:100%;text-align:left}
+.r-lbl{font-size:9px;font-weight:500;color:rgba(255,255,255,.25);text-transform:uppercase;letter-spacing:.5px;margin-bottom:10px}
+.ri{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.05)}
+.ri:last-child{border:none}
+.rdot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
+.rtxt{font-size:12px;color:var(--stone)}
+.next-badge{background:rgba(232,160,48,.08);border:1px solid rgba(232,160,48,.2);border-radius:10px;padding:12px 16px;width:100%}
+.nb-lbl{font-size:9px;color:var(--amber);font-weight:500;text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px}
+.nb-txt{font-family:'Cormorant Garamond',serif;font-size:17px;color:var(--amber-light);font-weight:300}
+
+@keyframes popIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+</style>
+</head>
+<body>
+
+<div class="prog-bar" id="progBar"></div>
+
+<div class="hdr">
+  <div class="logo-text"><em>Lume</em></div>
+  <div class="hdr-badge">A2 · Daily Life</div>
+</div>
+
+<div class="page">
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-tag">Daily Life · A2 Elementary</div>
+  <div class="cover-title">Adverbs of<br><span>Manner</span></div>
+  <div class="cover-sub">How do people do things in everyday life?</div>
+  <div class="cover-badge">
+    <div class="av">M</div>
+    <div class="sname">Manuela Alvarenga · A2</div>
+  </div>
+</div>
+<div class="divider"><div class="d1"></div><div class="d2"></div><div class="d3"></div></div>
+
+<!-- SECTION 1: READING -->
+<div class="sec white">
+  <span class="sec-lbl lbl-dark">Reading — How do you do it?</span>
+  <div class="sec-title t-dark">Three people, three routines</div>
+  <div class="tap-hint th-dark">Read all three texts first. Then tap the words together with your teacher.</div>
+
+  <!-- STEP INSTRUCTIONS -->
+  <div id="step-box" style="background:#F5FBFE;border:1px solid #C2EEF8;border-radius:10px;padding:12px 14px;margin-bottom:14px">
+    <div id="step1-bar" style="display:flex;align-items:center;gap:10px;margin-bottom:8px">
+      <div style="width:28px;height:28px;border-radius:50%;background:var(--sky);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:500;color:#fff;flex-shrink:0">1</div>
+      <div style="font-size:12px;color:#0077A0;font-weight:500">Which words describe <em>how</em> someone does something? Tap them → they turn <b style="color:var(--sky)">blue</b>.</div>
+    </div>
+    <div id="step2-bar" style="display:flex;align-items:center;gap:10px;opacity:.35">
+      <div style="width:28px;height:28px;border-radius:50%;background:var(--amber);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:500;color:#fff;flex-shrink:0">2</div>
+      <div style="font-size:12px;color:#8B5000;font-weight:500">Now find the words that make adverbs stronger or weaker → they turn <b style="color:var(--amber)">amber</b>.</div>
+    </div>
+    <div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap">
+      <button onclick="setMode('adverb')" id="btn-adv" style="font-family:'DM Sans',sans-serif;font-size:11px;font-weight:500;padding:6px 14px;border-radius:20px;border:2px solid var(--sky);background:var(--sky);color:#fff;cursor:pointer">Step 1 · Adverbs</button>
+      <button onclick="setMode('modifier')" id="btn-mod" style="font-family:'DM Sans',sans-serif;font-size:11px;font-weight:500;padding:6px 14px;border-radius:20px;border:2px solid var(--border-light);background:#fff;color:var(--stone);cursor:pointer">Step 2 · Modifiers</button>
+      <button onclick="resetWords()" style="font-family:'DM Sans',sans-serif;font-size:11px;font-weight:400;padding:6px 14px;border-radius:20px;border:1px solid var(--border-light);background:#fff;color:var(--stone);cursor:pointer;margin-left:auto">Reset</button>
+    </div>
+  </div>
+
+  <div class="profile" style="margin-top:4px">
+    <div class="p-hdr" style="background:#1A7AA0">
+      <span class="p-emoji">📱</span>
+      <div><div class="p-name">Ana, 28</div><div class="p-info">content creator · São Paulo</div></div>
+    </div>
+    <div class="p-body">
+      I wake up <span class="w" data-adv="0" data-mod="1">quite</span> early. I work out <span class="w" data-adv="0" data-mod="1">really</span> <span class="w" data-adv="1" data-mod="0">hard</span> and shower <span class="w" data-adv="1" data-mod="0">quickly</span>. I respond to messages <span class="w" data-adv="1" data-mod="0">immediately</span> and plan my content <span class="w" data-adv="0" data-mod="1">very</span> <span class="w" data-adv="1" data-mod="0">carefully</span>. I post on Instagram <span class="w" data-adv="1" data-mod="0">regularly</span> and fall asleep <span class="w" data-adv="0" data-mod="1">incredibly</span> <span class="w" data-adv="1" data-mod="0">fast</span>.
+    </div>
+  </div>
+
+  <div class="profile">
+    <div class="p-hdr" style="background:#29BDE0">
+      <span class="p-emoji">🎨</span>
+      <div><div class="p-name">Marcos, 35</div><div class="p-info">graphic designer · Belo Horizonte</div></div>
+    </div>
+    <div class="p-body">
+      I wake up <span class="w" data-adv="0" data-mod="1">quite</span> late and work <span class="w" data-adv="0" data-mod="1">incredibly</span> <span class="w" data-adv="1" data-mod="0">hard</span> in the afternoon. I explain my ideas <span class="w" data-adv="1" data-mod="0">clearly</span> and dress <span class="w" data-adv="0" data-mod="1">quite</span> <span class="w" data-adv="1" data-mod="0">casually</span>. I cook at home <span class="w" data-adv="1" data-mod="0">regularly</span>.
+    </div>
+  </div>
+
+  <div class="profile">
+    <div class="p-hdr" style="background:#E8A030">
+      <span class="p-emoji">💻</span>
+      <div><div class="p-name">Beatriz, 42</div><div class="p-info">online teacher · Rio de Janeiro</div></div>
+    </div>
+    <div class="p-body">
+      I get up <span class="w" data-adv="0" data-mod="1">really</span> early but move <span class="w" data-adv="0" data-mod="1">incredibly</span> <span class="w" data-adv="1" data-mod="0">slowly</span> until my first coffee! I prepare my classes <span class="w" data-adv="1" data-mod="0">carefully</span> and speak to students <span class="w" data-adv="1" data-mod="0">warmly</span>. After 7pm I disconnect <span class="w" data-adv="1" data-mod="0">completely</span>.
+    </div>
+  </div>
+
+  <div class="tf-block" style="margin-top:16px">
+    <div class="tf-lbl">Comprehension — tap T or F</div>
+    <div class="tf-row">
+      <div class="tf-q">Ana wakes up later than Beatriz.</div>
+      <div class="tf-btns">
+        <button class="tf-btn" onclick="doTF(this,'F','T')">T</button>
+        <button class="tf-btn" onclick="doTF(this,'F','F')">F</button>
+      </div>
+    </div>
+    <div class="tf-row">
+      <div class="tf-q">Ana responds to messages immediately.</div>
+      <div class="tf-btns">
+        <button class="tf-btn" onclick="doTF(this,'T','T')">T</button>
+        <button class="tf-btn" onclick="doTF(this,'T','F')">F</button>
+      </div>
+    </div>
+    <div class="tf-row">
+      <div class="tf-q">Marcos works hardest in the morning.</div>
+      <div class="tf-btns">
+        <button class="tf-btn" onclick="doTF(this,'F','T')">T</button>
+        <button class="tf-btn" onclick="doTF(this,'F','F')">F</button>
+      </div>
+    </div>
+    <div class="tf-row">
+      <div class="tf-q">Beatriz disconnects from screens after 7pm.</div>
+      <div class="tf-btns">
+        <button class="tf-btn" onclick="doTF(this,'T','T')">T</button>
+        <button class="tf-btn" onclick="doTF(this,'T','F')">F</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="divider"><div class="d1"></div><div class="d2"></div><div class="d3"></div></div>
+
+<!-- SECTION 2: GRAMMAR -->
+<div class="sec dark">
+  <span class="sec-lbl lbl-sky">Grammar — Adverbs of manner</span>
+  <div class="sec-title t-white">How to form them</div>
+  <div class="tap-hint th-dark">Tap each rule to see a real example</div>
+
+  <div class="rule-grid">
+    <div class="rule-card" onclick="toggleEx(this)">
+      <div class="rtag">Rule 1 · most adjectives</div>
+      <div class="rtitle">+ -ly</div>
+      <div class="rforms">careful → <b>carefully</b><br>quick → <b>quickly</b></div>
+      <div class="ex-bubble"><div class="ex-txt">"She plans her content <b>carefully</b> before posting."</div></div>
+    </div>
+    <div class="rule-card" onclick="toggleEx(this)">
+      <div class="rtag">Rule 2 · ends in -e</div>
+      <div class="rtitle">-e → -ly</div>
+      <div class="rforms">simple → <b>simply</b><br>immediate → <b>immediately</b></div>
+      <div class="ex-bubble"><div class="ex-txt">"He explains things <b>simply</b> so everyone understands."</div></div>
+    </div>
+    <div class="rule-card" onclick="toggleEx(this)">
+      <div class="rtag">Rule 3 · ends in -y</div>
+      <div class="rtitle">-y → -ily</div>
+      <div class="rforms">healthy → <b>healthily</b><br>easy → <b>easily</b></div>
+      <div class="ex-bubble"><div class="ex-txt">"She eats <b>healthily</b> — lots of vegetables and fruit."</div></div>
+    </div>
+    <div class="rule-card" onclick="toggleEx(this)">
+      <div class="rtag">Rule 4 · no change</div>
+      <div class="rtitle">same form</div>
+      <div class="rforms">fast → <b>fast</b><br>hard → <b>hard</b></div>
+      <div class="ex-bubble"><div class="ex-txt">"She works <b>hard</b> every day and runs <b>fast</b> at the gym!"</div></div>
+    </div>
+    <div class="rule-card full-card" onclick="toggleEx(this)">
+      <div class="rtag">Rule 5 · irregular — memorise!</div>
+      <div class="rtitle">good → well &nbsp;·&nbsp; bad → badly</div>
+      <div class="rforms">These don't follow any pattern — learn them separately.</div>
+      <div class="ex-bubble"><div class="ex-txt">"She sings <b>well</b> but dances <b>badly</b>. You can't have everything!"</div></div>
+    </div>
+  </div>
+
+  <div class="warn-box">
+    <div class="w-lbl">Position rule</div>
+    <div class="w-txt">After the verb → "She speaks <b>clearly</b>" · "He works <b>hard</b>"<br>Before adj/adv → "<b>really</b> hard" · "<b>quite</b> slowly"</div>
+  </div>
+</div>
+<div class="divider"><div class="d1"></div><div class="d2"></div><div class="d3"></div></div>
+
+<!-- SECTION 3: TRICKY ONES -->
+<div class="sec white">
+  <span class="sec-lbl lbl-amber">Watch out — Tricky ones</span>
+  <div class="sec-title t-dark">Let's fix these</div>
+  <div class="tap-hint th-dark">Tap each card to reveal an example</div>
+
+  <div class="irr-grid">
+    <div class="irr-card" onclick="toggleIrr(this)">
+      <div class="irr-adj">good</div>
+      <div class="irr-arr">→ adverb</div>
+      <div class="irr-adv">well</div>
+      <div class="irr-note">Most common irregular.</div>
+      <div class="irr-ex">"That meeting went <b>really well</b>."</div>
+    </div>
+    <div class="irr-card" onclick="toggleIrr(this)">
+      <div class="irr-adj">hard</div>
+      <div class="irr-arr">→ adverb</div>
+      <div class="irr-adv">hard</div>
+      <div class="irr-note">No change — same form.</div>
+      <div class="irr-ex">"He studies <b>incredibly hard</b>."</div>
+    </div>
+    <div class="irr-card" onclick="toggleIrr(this)">
+      <div class="irr-adj">fast</div>
+      <div class="irr-arr">→ adverb</div>
+      <div class="irr-adv">fast</div>
+      <div class="irr-note">No change — same form.</div>
+      <div class="irr-ex">"She replied <b>incredibly fast</b>."</div>
+    </div>
+    <div class="irr-card" onclick="toggleIrr(this)">
+      <div class="irr-adj">late</div>
+      <div class="irr-arr">→ adverb</div>
+      <div class="irr-adv">late</div>
+      <div class="irr-note">No change — same form.</div>
+      <div class="irr-ex">"She always arrives <b>quite late</b>."</div>
+    </div>
+  </div>
+
+  <div class="danger-box">
+    <div class="d-row">
+      <span class="ebadge w">✗</span>
+      <span class="d-wrong">"He hardly works."</span>
+      <span style="font-size:11px;color:#FF6B6B">≠ works a lot</span>
+    </div>
+    <div class="d-row">
+      <span class="ebadge r">✓</span>
+      <span class="d-right">"He works hard." = works a lot</span>
+    </div>
+    <div class="d-tip">⚠️ <b>hardly</b> = <i>quase não</i> — a completely different word!</div>
+  </div>
+
+  <div class="pos-block">
+    <div class="pos-hdr">Position in the sentence</div>
+    <div class="pos-row">
+      <span class="pos-tag">after verb</span>
+      <span class="pos-ex">She speaks <b>clearly</b>. He works <b>hard</b>. I slept <b>well</b>.</span>
+    </div>
+    <div class="pos-row">
+      <span class="pos-tag">before adj/adv</span>
+      <span class="pos-ex"><b>really</b> fast · <b>quite</b> slowly · <b>incredibly</b> well</span>
+    </div>
+  </div>
+</div>
+<div class="divider"><div class="d1"></div><div class="d2"></div><div class="d3"></div></div>
+
+<!-- SECTION 4: MODIFIERS -->
+<div class="sec dark">
+  <span class="sec-lbl lbl-sky">Grammar — Modifiers</span>
+  <div class="sec-title t-white">How much?</div>
+
+  <div class="scale-block">
+    <div class="scale-hdr">Strength — from weak to strong</div>
+    <div class="scale-row">
+      <div class="scale-cell"><span class="scale-mod">a bit</span><span class="scale-ex">a bit fast</span></div>
+      <div class="scale-cell"><span class="scale-mod">quite</span><span class="scale-ex">quite slowly</span></div>
+      <div class="scale-cell"><span class="scale-mod">really</span><span class="scale-ex">really hard</span></div>
+      <div class="scale-cell"><span class="scale-mod" style="color:var(--amber-light)">incredibly</span><span class="scale-ex">incredibly fast</span></div>
+    </div>
+  </div>
+
+  <div class="mod-picker">
+    <div class="mp-hdr">Tap a modifier — see it in a sentence</div>
+    <div class="mp-pills">
+      <button class="mp-pill" onclick="pickMod(this,'She talks <b>a bit</b> fast on calls, but you get used to it.')">a bit</button>
+      <button class="mp-pill" onclick="pickMod(this,'He works <b>quite</b> hard — not obsessively, but always focused.')">quite</button>
+      <button class="mp-pill" onclick="pickMod(this,'She responds to messages <b>really</b> quickly. Always under 5 minutes.')">really</button>
+      <button class="mp-pill" onclick="pickMod(this,'I was checking every detail <b>very</b> carefully before sending.')">very</button>
+      <button class="mp-pill" onclick="pickMod(this,'He works <b>incredibly</b> hard. He never seems to take a break.')">incredibly</button>
+    </div>
+    <div class="mp-result" id="mpResult">
+      <div class="mp-sent" id="mpSent"></div>
+    </div>
+  </div>
+
+  <div class="from-reading">
+    <div class="fr-lbl">From the reading — spot the modifiers</div>
+    <div class="fr-line">"I work out <b>really</b> hard" — Ana</div>
+    <div class="fr-line">"I work <b>incredibly</b> hard" — Marcos</div>
+    <div class="fr-line">"I wake up <b>quite</b> late" — Marcos</div>
+    <div class="fr-line">"I move <b>incredibly</b> slowly" — Beatriz</div>
+  </div>
+</div>
+<div class="divider"><div class="d1"></div><div class="d2"></div><div class="d3"></div></div>
+
+<!-- SECTION 5: SPEAKING -->
+<div class="sec white">
+  <span class="sec-lbl lbl-dark">Speaking — Em aula</span>
+  <div class="sec-title t-dark">Describe someone you know</div>
+
+  <div class="task-box">
+    <div class="task-hdr">
+      <span class="task-tag">Your turn</span>
+      <span class="task-sub">Tap each topic when done</span>
+    </div>
+    <div class="task-body">
+      <div class="task-title">Think of someone you know well</div>
+      <div class="task-desc">A friend, family or colleague. Describe how they do everyday things — use adverbs!</div>
+      <div class="topic-grid">
+        <div class="topic" onclick="toggleTopic(this)"><div class="tchk">✓</div><span>wakes up / sleeps</span></div>
+        <div class="topic" onclick="toggleTopic(this)"><div class="tchk">✓</div><span>works / studies</span></div>
+        <div class="topic" onclick="toggleTopic(this)"><div class="tchk">✓</div><span>communicates</span></div>
+        <div class="topic" onclick="toggleTopic(this)"><div class="tchk">✓</div><span>cooks / eats</span></div>
+        <div class="topic" onclick="toggleTopic(this)"><div class="tchk">✓</div><span>drives / moves</span></div>
+        <div class="topic" onclick="toggleTopic(this)"><div class="tchk">✓</div><span>dresses / organises</span></div>
+      </div>
+      <div class="adv-bank">
+        <div class="ab-lbl">Adverb bank</div>
+        <div class="ab-pills">
+          <span class="ab-pill">quickly</span><span class="ab-pill">slowly</span>
+          <span class="ab-pill">carefully</span><span class="ab-pill">hard</span>
+          <span class="ab-pill">well</span><span class="ab-pill">immediately</span>
+          <span class="ab-pill">regularly</span><span class="ab-pill">healthily</span>
+          <span class="ab-pill">warmly</span><span class="ab-pill">incredibly</span>
+          <span class="ab-pill">quite</span><span class="ab-pill">really</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="example-box">
+    <div class="ex-lbl">Example</div>
+    <div class="ex-sent">"My sister wakes up <b>incredibly</b> early. She works <b>really</b> hard and eats <b>very</b> healthily. She drives <b>a bit</b> dangerously though!"</div>
+  </div>
+</div>
+<div class="divider"><div class="d1"></div><div class="d2"></div><div class="d3"></div></div>
+
+<!-- RECAP -->
+<div class="recap-cover">
+  <div class="end-title">Well done,<br><span>Manuela.</span></div>
+  <div class="end-sub">Adverbs of manner — you can now describe how people do things in everyday life.</div>
+  <div class="recap">
+    <div class="r-lbl">Today's recap</div>
+    <div class="ri"><div class="rdot" style="background:var(--sky)"></div><div class="rtxt">Read 3 real-life profiles with adverbs in context</div></div>
+    <div class="ri"><div class="rdot" style="background:var(--sky-mid)"></div><div class="rtxt">Learned the 5 formation rules (+ -ly, -ily, no change…)</div></div>
+    <div class="ri"><div class="rdot" style="background:var(--amber)"></div><div class="rtxt">Fixed the hard ≠ hardly trap</div></div>
+    <div class="ri"><div class="rdot" style="background:var(--amber-light)"></div><div class="rtxt">Practised modifiers: a bit · quite · really · incredibly</div></div>
+    <div class="ri"><div class="rdot" style="background:var(--sky-light)"></div><div class="rtxt">Described someone you know using adverbs</div></div>
+  </div>
+  <div class="next-badge">
+    <div class="nb-lbl">Next class</div>
+    <div class="nb-txt">Exercises + Pronunciation — Word stress in adverbs</div>
+  </div>
+</div>
+
+</div>
+
+<script>
+// Word identification
+let currentMode='adverb';
+function setMode(mode){
+  currentMode=mode;
+  const ba=document.getElementById('btn-adv');
+  const bm=document.getElementById('btn-mod');
+  const s1=document.getElementById('step1-bar');
+  const s2=document.getElementById('step2-bar');
+  if(mode==='adverb'){
+    ba.style.cssText='font-family:DM Sans,sans-serif;font-size:11px;font-weight:500;padding:6px 14px;border-radius:20px;border:2px solid var(--sky);background:var(--sky);color:#fff;cursor:pointer';
+    bm.style.cssText='font-family:DM Sans,sans-serif;font-size:11px;font-weight:500;padding:6px 14px;border-radius:20px;border:2px solid #D8EEF5;background:#fff;color:#999;cursor:pointer';
+    s1.style.opacity='1';s2.style.opacity='.35';
+  } else {
+    bm.style.cssText='font-family:DM Sans,sans-serif;font-size:11px;font-weight:500;padding:6px 14px;border-radius:20px;border:2px solid var(--amber);background:var(--amber);color:#fff;cursor:pointer';
+    ba.style.cssText='font-family:DM Sans,sans-serif;font-size:11px;font-weight:500;padding:6px 14px;border-radius:20px;border:2px solid #D8EEF5;background:#fff;color:#999;cursor:pointer';
+    s2.style.opacity='1';s1.style.opacity='.35';
+  }
+}
+function resetWords(){
+  document.querySelectorAll('.w').forEach(w=>{w.style.cssText='';});
+  setMode('adverb');
+}
+document.addEventListener('click',function(e){
+  const w=e.target.closest('.w');
+  if(!w)return;
+  if(currentMode==='adverb'&&w.dataset.adv==='1'){
+    w.style.background='#E4F5FC';w.style.color='#0077A0';
+    w.style.borderRadius='3px';w.style.padding='0 4px';
+    w.style.fontWeight='500';w.style.borderBottom='2px solid #29BDE0';
+  } else if(currentMode==='modifier'&&w.dataset.mod==='1'){
+    w.style.background='#FEF0CC';w.style.color='#8B5000';
+    w.style.borderRadius='3px';w.style.padding='0 4px';
+    w.style.fontWeight='500';w.style.borderBottom='2px solid #E8A030';
+  }
+});
+setTimeout(()=>setMode('adverb'),100);
+
+window.addEventListener('scroll',()=>{
+  const el=document.documentElement;
+  const pct=(el.scrollTop/(el.scrollHeight-el.clientHeight))*100;
+  document.getElementById('progBar').style.width=pct+'%';
+},{passive:true});
+
+function toggleEx(card){
+  const bubble=card.querySelector('.ex-bubble');
+  const isOpen=bubble.classList.contains('show');
+  document.querySelectorAll('.ex-bubble').forEach(b=>b.classList.remove('show'));
+  document.querySelectorAll('.rule-card').forEach(c=>c.classList.remove('open'));
+  if(!isOpen){bubble.classList.add('show');card.classList.add('open');}
+}
+
+function toggleIrr(card){
+  const isOpen=card.classList.contains('open');
+  document.querySelectorAll('.irr-card').forEach(c=>c.classList.remove('open'));
+  if(!isOpen){card.classList.add('open');}
+}
+
+function pickMod(btn,sentence){
+  document.querySelectorAll('.mp-pill').forEach(p=>{
+    p.style.borderColor='rgba(255,255,255,.12)';
+    p.style.color='rgba(255,255,255,.5)';
+    p.style.background='rgba(255,255,255,.05)';
+  });
+  btn.style.borderColor='var(--amber-light)';
+  btn.style.color='var(--amber-light)';
+  btn.style.background='rgba(232,160,48,.12)';
+  const res=document.getElementById('mpResult');
+  document.getElementById('mpSent').innerHTML='"'+sentence+'"';
+  res.classList.add('show');
+  res.style.animation='none';
+  void res.offsetWidth;
+  res.style.animation='popIn .2s ease';
+}
+
+function toggleTopic(el){el.classList.toggle('done');}
+
+function doTF(btn,correct,chosen){
+  const row=btn.closest('.tf-row');
+  const btns=row.querySelectorAll('.tf-btn');
+  btns.forEach(b=>{
+    b.classList.remove('correct','wrong','dim');
+    const val=b.textContent.trim();
+    if(chosen===correct){
+      if(val===correct)b.classList.add('correct');
+      else b.classList.add('dim');
+    }else{
+      if(val===correct)b.classList.add('correct');
+      else if(val===chosen)b.classList.add('wrong');
+    }
+    b.onclick=null;
+  });
+}
+</script>
+
+<!-- HOMEWORK -->
+<div class="divider"><div class="d1"></div><div class="d2"></div><div class="d3"></div></div>
+<div class="sec white">
+  <span class="sec-lbl lbl-dark">Daily English Practice</span>
+  <div class="sec-title t-dark">This week's homework</div>
+  <div class="tap-hint th-dark">Three days — consistent practice beats perfect practice.</div>
+
+  <div style="border:1px solid #D0EEF8;border-radius:10px;overflow:hidden;margin-bottom:10px">
+    <div style="background:#29BDE0;padding:9px 14px;display:flex;align-items:center;gap:10px">
+      <div style="font-size:10px;font-weight:500;color:#fff;letter-spacing:1px;text-transform:uppercase">Monday · Grammar</div>
+      <div style="font-size:9px;color:rgba(255,255,255,.65);margin-left:auto">✏️ caderno</div>
+    </div>
+    <div style="padding:13px 14px;background:#fff">
+      <div style="font-family:'Cormorant Garamond',serif;font-size:16px;color:#0077A0;margin-bottom:8px">Your own routine in adverbs</div>
+      <div style="font-size:12px;color:#555;line-height:1.8">
+        Write 5 sentences about your daily routine using adverbs of manner.<br>
+        <span style="color:#999;font-size:11px">Ex: "I work <b style="color:#0077A0">really hard</b> on Mondays. I eat <b style="color:#0077A0">quickly</b> at lunch."</span><br><br>
+        <b style="color:#2C2C2A">Challenge:</b> Use at least one modifier (really, quite, incredibly) in each sentence.<br><br>
+        <span style="font-size:11px;color:#E8A030;font-weight:500">📸 Photo → WhatsApp</span>
+      </div>
+    </div>
+  </div>
+
+  <div style="border:1px solid #D0EEF8;border-radius:10px;overflow:hidden;margin-bottom:10px">
+    <div style="background:#E8A030;padding:9px 14px;display:flex;align-items:center;gap:10px">
+      <div style="font-size:10px;font-weight:500;color:#fff;letter-spacing:1px;text-transform:uppercase">Wednesday · Pronunciation</div>
+      <div style="font-size:9px;color:rgba(255,255,255,.65);margin-left:auto">🎙️ áudio WhatsApp</div>
+    </div>
+    <div style="padding:13px 14px;background:#fff">
+      <div style="font-family:'Cormorant Garamond',serif;font-size:16px;color:#8B5000;margin-bottom:8px">Record yourself</div>
+      <div style="font-size:12px;color:#555;line-height:1.8">
+        Send a voice message describing someone you know well.<br>
+        Use <b style="color:#2C2C2A">at least 4 adverbs</b> from the lesson.<br><br>
+        <span style="color:#999;font-size:11px">Ex: "My mum wakes up really early. She works incredibly hard and speaks very calmly. She drives a bit slowly though!"</span><br><br>
+        <b style="color:#E8A030">Focus:</b> Don't worry about being perfect — speak naturally.
+      </div>
+    </div>
+  </div>
+
+  <div style="border:1px solid #D0EEF8;border-radius:10px;overflow:hidden;margin-bottom:14px">
+    <div style="background:#5ACCE8;padding:9px 14px;display:flex;align-items:center;gap:10px">
+      <div style="font-size:10px;font-weight:500;color:#fff;letter-spacing:1px;text-transform:uppercase">Friday · Listening</div>
+      <div style="font-size:9px;color:rgba(255,255,255,.65);margin-left:auto">🎧 BBC</div>
+    </div>
+    <div style="padding:13px 14px;background:#fff">
+      <div style="font-family:'Cormorant Garamond',serif;font-size:16px;color:#0077A0;margin-bottom:8px">BBC 6 Minute English</div>
+      <div style="font-size:12px;color:#555;line-height:1.8">
+        Search on YouTube or Spotify: <b style="color:#2C2C2A">"BBC 6 Minute English"</b><br>
+        <span style="color:#999;font-size:11px">Pick any episode that interests you.</span><br><br>
+        Listen once without stopping.<br>
+        Then listen again and write down <b style="color:#2C2C2A">5 words or expressions</b> you understood.<br><br>
+        <span style="color:#0077A0;font-size:11px">You don't need to understand everything — that's completely normal.</span><br><br>
+        <span style="font-size:11px;color:#E8A030;font-weight:500">📸 Photo → WhatsApp</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
