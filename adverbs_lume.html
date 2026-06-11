@@ -256,21 +256,32 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--white);fo
 <div class="sec white">
   <span class="sec-lbl lbl-dark">Reading — How do you do it?</span>
   <div class="sec-title t-dark">Three people, three routines</div>
-  <div class="tap-hint th-dark">Notice how adverbs describe <b>how</b> people do things</div>
+  <div class="tap-hint th-dark">Read all three texts first. Then tap the words together with your teacher.</div>
 
-  <div class="legend-row" style="background:#F5FBFE;padding:8px 10px;border-radius:8px;border:1px solid #D0EEF8">
-    <span class="hl-m-p">modifier</span><span style="font-size:10px;color:#666">= really, quite, incredibly</span>
-    &nbsp;&nbsp;
-    <span class="hl-a-p">adverb</span><span style="font-size:10px;color:#666">= carefully, slowly…</span>
+  <!-- STEP INSTRUCTIONS -->
+  <div id="step-box" style="background:#F5FBFE;border:1px solid #C2EEF8;border-radius:10px;padding:12px 14px;margin-bottom:14px">
+    <div id="step1-bar" style="display:flex;align-items:center;gap:10px;margin-bottom:8px">
+      <div style="width:28px;height:28px;border-radius:50%;background:var(--sky);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:500;color:#fff;flex-shrink:0">1</div>
+      <div style="font-size:12px;color:#0077A0;font-weight:500">Which words describe <em>how</em> someone does something? Tap them → they turn <b style="color:var(--sky)">blue</b>.</div>
+    </div>
+    <div id="step2-bar" style="display:flex;align-items:center;gap:10px;opacity:.35">
+      <div style="width:28px;height:28px;border-radius:50%;background:var(--amber);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:500;color:#fff;flex-shrink:0">2</div>
+      <div style="font-size:12px;color:#8B5000;font-weight:500">Now find the words that make adverbs stronger or weaker → they turn <b style="color:var(--amber)">amber</b>.</div>
+    </div>
+    <div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap">
+      <button onclick="setMode('adverb')" id="btn-adv" style="font-family:'DM Sans',sans-serif;font-size:11px;font-weight:500;padding:6px 14px;border-radius:20px;border:2px solid var(--sky);background:var(--sky);color:#fff;cursor:pointer">Step 1 · Adverbs</button>
+      <button onclick="setMode('modifier')" id="btn-mod" style="font-family:'DM Sans',sans-serif;font-size:11px;font-weight:500;padding:6px 14px;border-radius:20px;border:2px solid var(--border-light);background:#fff;color:var(--stone);cursor:pointer">Step 2 · Modifiers</button>
+      <button onclick="resetWords()" style="font-family:'DM Sans',sans-serif;font-size:11px;font-weight:400;padding:6px 14px;border-radius:20px;border:1px solid var(--border-light);background:#fff;color:var(--stone);cursor:pointer;margin-left:auto">Reset</button>
+    </div>
   </div>
 
-  <div class="profile" style="margin-top:12px">
+  <div class="profile" style="margin-top:4px">
     <div class="p-hdr" style="background:#1A7AA0">
       <span class="p-emoji">📱</span>
       <div><div class="p-name">Ana, 28</div><div class="p-info">content creator · São Paulo</div></div>
     </div>
     <div class="p-body">
-      I wake up <span class="hl-m-p">quite</span> early. I work out <span class="hl-m-p">really</span> <span class="hl-a-p">hard</span> and shower <span class="hl-a-p">quickly</span>. I respond to messages <span class="hl-a-p">immediately</span> and plan my content <span class="hl-m-p">very</span> <span class="hl-a-p">carefully</span>. I post on Instagram <span class="hl-a-p">regularly</span> and fall asleep <span class="hl-m-p">incredibly</span> <span class="hl-a-p">fast</span>.
+      I wake up <span class="w" data-adv="0" data-mod="1">quite</span> early. I work out <span class="w" data-adv="0" data-mod="1">really</span> <span class="w" data-adv="1" data-mod="0">hard</span> and shower <span class="w" data-adv="1" data-mod="0">quickly</span>. I respond to messages <span class="w" data-adv="1" data-mod="0">immediately</span> and plan my content <span class="w" data-adv="0" data-mod="1">very</span> <span class="w" data-adv="1" data-mod="0">carefully</span>. I post on Instagram <span class="w" data-adv="1" data-mod="0">regularly</span> and fall asleep <span class="w" data-adv="0" data-mod="1">incredibly</span> <span class="w" data-adv="1" data-mod="0">fast</span>.
     </div>
   </div>
 
@@ -280,7 +291,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--white);fo
       <div><div class="p-name">Marcos, 35</div><div class="p-info">graphic designer · Belo Horizonte</div></div>
     </div>
     <div class="p-body">
-      I wake up <span class="hl-m-p">quite</span> late and work <span class="hl-m-p">incredibly</span> <span class="hl-a-p">hard</span> in the afternoon. I explain my ideas <span class="hl-a-p">clearly</span> and dress <span class="hl-m-p">quite</span> <span class="hl-a-p">casually</span>. I cook at home <span class="hl-a-p">regularly</span>.
+      I wake up <span class="w" data-adv="0" data-mod="1">quite</span> late and work <span class="w" data-adv="0" data-mod="1">incredibly</span> <span class="w" data-adv="1" data-mod="0">hard</span> in the afternoon. I explain my ideas <span class="w" data-adv="1" data-mod="0">clearly</span> and dress <span class="w" data-adv="0" data-mod="1">quite</span> <span class="w" data-adv="1" data-mod="0">casually</span>. I cook at home <span class="w" data-adv="1" data-mod="0">regularly</span>.
     </div>
   </div>
 
@@ -290,11 +301,11 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--white);fo
       <div><div class="p-name">Beatriz, 42</div><div class="p-info">online teacher · Rio de Janeiro</div></div>
     </div>
     <div class="p-body">
-      I get up <span class="hl-m-p">really</span> early but move <span class="hl-m-p">incredibly</span> <span class="hl-a-p">slowly</span> until my first coffee! I prepare my classes <span class="hl-a-p">carefully</span> and speak to students <span class="hl-a-p">warmly</span>. After 7pm I disconnect <span class="hl-a-p">completely</span>.
+      I get up <span class="w" data-adv="0" data-mod="1">really</span> early but move <span class="w" data-adv="0" data-mod="1">incredibly</span> <span class="w" data-adv="1" data-mod="0">slowly</span> until my first coffee! I prepare my classes <span class="w" data-adv="1" data-mod="0">carefully</span> and speak to students <span class="w" data-adv="1" data-mod="0">warmly</span>. After 7pm I disconnect <span class="w" data-adv="1" data-mod="0">completely</span>.
     </div>
   </div>
 
-  <div class="tf-block">
+  <div class="tf-block" style="margin-top:16px">
     <div class="tf-lbl">Comprehension — tap T or F</div>
     <div class="tf-row">
       <div class="tf-q">Ana wakes up later than Beatriz.</div>
@@ -540,6 +551,43 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--white);fo
 </div>
 
 <script>
+// Word identification
+let currentMode='adverb';
+function setMode(mode){
+  currentMode=mode;
+  const ba=document.getElementById('btn-adv');
+  const bm=document.getElementById('btn-mod');
+  const s1=document.getElementById('step1-bar');
+  const s2=document.getElementById('step2-bar');
+  if(mode==='adverb'){
+    ba.style.cssText='font-family:DM Sans,sans-serif;font-size:11px;font-weight:500;padding:6px 14px;border-radius:20px;border:2px solid var(--sky);background:var(--sky);color:#fff;cursor:pointer';
+    bm.style.cssText='font-family:DM Sans,sans-serif;font-size:11px;font-weight:500;padding:6px 14px;border-radius:20px;border:2px solid #D8EEF5;background:#fff;color:#999;cursor:pointer';
+    s1.style.opacity='1';s2.style.opacity='.35';
+  } else {
+    bm.style.cssText='font-family:DM Sans,sans-serif;font-size:11px;font-weight:500;padding:6px 14px;border-radius:20px;border:2px solid var(--amber);background:var(--amber);color:#fff;cursor:pointer';
+    ba.style.cssText='font-family:DM Sans,sans-serif;font-size:11px;font-weight:500;padding:6px 14px;border-radius:20px;border:2px solid #D8EEF5;background:#fff;color:#999;cursor:pointer';
+    s2.style.opacity='1';s1.style.opacity='.35';
+  }
+}
+function resetWords(){
+  document.querySelectorAll('.w').forEach(w=>{w.style.cssText='';});
+  setMode('adverb');
+}
+document.addEventListener('click',function(e){
+  const w=e.target.closest('.w');
+  if(!w)return;
+  if(currentMode==='adverb'&&w.dataset.adv==='1'){
+    w.style.background='#E4F5FC';w.style.color='#0077A0';
+    w.style.borderRadius='3px';w.style.padding='0 4px';
+    w.style.fontWeight='500';w.style.borderBottom='2px solid #29BDE0';
+  } else if(currentMode==='modifier'&&w.dataset.mod==='1'){
+    w.style.background='#FEF0CC';w.style.color='#8B5000';
+    w.style.borderRadius='3px';w.style.padding='0 4px';
+    w.style.fontWeight='500';w.style.borderBottom='2px solid #E8A030';
+  }
+});
+setTimeout(()=>setMode('adverb'),100);
+
 window.addEventListener('scroll',()=>{
   const el=document.documentElement;
   const pct=(el.scrollTop/(el.scrollHeight-el.clientHeight))*100;
@@ -596,5 +644,65 @@ function doTF(btn,correct,chosen){
   });
 }
 </script>
+
+<!-- HOMEWORK -->
+<div class="divider"><div class="d1"></div><div class="d2"></div><div class="d3"></div></div>
+<div class="sec white">
+  <span class="sec-lbl lbl-dark">Daily English Practice</span>
+  <div class="sec-title t-dark">This week's homework</div>
+  <div class="tap-hint th-dark">Three days — consistent practice beats perfect practice.</div>
+
+  <div style="border:1px solid #D0EEF8;border-radius:10px;overflow:hidden;margin-bottom:10px">
+    <div style="background:#29BDE0;padding:9px 14px;display:flex;align-items:center;gap:10px">
+      <div style="font-size:10px;font-weight:500;color:#fff;letter-spacing:1px;text-transform:uppercase">Monday · Grammar</div>
+      <div style="font-size:9px;color:rgba(255,255,255,.65);margin-left:auto">✏️ caderno</div>
+    </div>
+    <div style="padding:13px 14px;background:#fff">
+      <div style="font-family:'Cormorant Garamond',serif;font-size:16px;color:#0077A0;margin-bottom:8px">Your own routine in adverbs</div>
+      <div style="font-size:12px;color:#555;line-height:1.8">
+        Write 5 sentences about your daily routine using adverbs of manner.<br>
+        <span style="color:#999;font-size:11px">Ex: "I work <b style="color:#0077A0">really hard</b> on Mondays. I eat <b style="color:#0077A0">quickly</b> at lunch."</span><br><br>
+        <b style="color:#2C2C2A">Challenge:</b> Use at least one modifier (really, quite, incredibly) in each sentence.<br><br>
+        <span style="font-size:11px;color:#E8A030;font-weight:500">📸 Photo → WhatsApp</span>
+      </div>
+    </div>
+  </div>
+
+  <div style="border:1px solid #D0EEF8;border-radius:10px;overflow:hidden;margin-bottom:10px">
+    <div style="background:#E8A030;padding:9px 14px;display:flex;align-items:center;gap:10px">
+      <div style="font-size:10px;font-weight:500;color:#fff;letter-spacing:1px;text-transform:uppercase">Wednesday · Pronunciation</div>
+      <div style="font-size:9px;color:rgba(255,255,255,.65);margin-left:auto">🎙️ áudio WhatsApp</div>
+    </div>
+    <div style="padding:13px 14px;background:#fff">
+      <div style="font-family:'Cormorant Garamond',serif;font-size:16px;color:#8B5000;margin-bottom:8px">Record yourself</div>
+      <div style="font-size:12px;color:#555;line-height:1.8">
+        Send a voice message describing someone you know well.<br>
+        Use <b style="color:#2C2C2A">at least 4 adverbs</b> from the lesson.<br><br>
+        <span style="color:#999;font-size:11px">Ex: "My mum wakes up really early. She works incredibly hard and speaks very calmly. She drives a bit slowly though!"</span><br><br>
+        <b style="color:#E8A030">Focus:</b> Don't worry about being perfect — speak naturally.
+      </div>
+    </div>
+  </div>
+
+  <div style="border:1px solid #D0EEF8;border-radius:10px;overflow:hidden;margin-bottom:14px">
+    <div style="background:#5ACCE8;padding:9px 14px;display:flex;align-items:center;gap:10px">
+      <div style="font-size:10px;font-weight:500;color:#fff;letter-spacing:1px;text-transform:uppercase">Friday · Listening</div>
+      <div style="font-size:9px;color:rgba(255,255,255,.65);margin-left:auto">🎧 BBC</div>
+    </div>
+    <div style="padding:13px 14px;background:#fff">
+      <div style="font-family:'Cormorant Garamond',serif;font-size:16px;color:#0077A0;margin-bottom:8px">BBC 6 Minute English</div>
+      <div style="font-size:12px;color:#555;line-height:1.8">
+        Search on YouTube or Spotify: <b style="color:#2C2C2A">"BBC 6 Minute English"</b><br>
+        <span style="color:#999;font-size:11px">Pick any episode that interests you.</span><br><br>
+        Listen once without stopping.<br>
+        Then listen again and write down <b style="color:#2C2C2A">5 words or expressions</b> you understood.<br><br>
+        <span style="color:#0077A0;font-size:11px">You don't need to understand everything — that's completely normal.</span><br><br>
+        <span style="font-size:11px;color:#E8A030;font-weight:500">📸 Photo → WhatsApp</span>
+      </div>
+    </div>
+  </div>
+</div>
+
 </body>
+</html>
 </html>
